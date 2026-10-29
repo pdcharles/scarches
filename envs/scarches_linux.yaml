@@ -2,14 +2,16 @@ name: scarches
 channels:
   - defaults
 dependencies:
-  - python=3.10
+  - python=3.12 #Minimum version to support scipy>1.15 and still support numpy<2
   - pip
-  - numpy
+  - numpy<2 #Required for pandas 
   - pip:
+    - scipy>=1.16.0 #Required to avoid security-related library restriction issue on newer macos
+    - ml_dtypes==0.5.4 #Later versions do not support numpy<2
     - torch --extra-index-url https://download.pytorch.org/whl/cu118
     - torchaudio --extra-index-url https://download.pytorch.org/whl/cu118
     - torchvision --extra-index-url https://download.pytorch.org/whl/cu118
     - scvi-tools
-    - scarches
+    - -e . # install scarches from local repo - pip distribution out of date, imports deprecated anndata functions
 variables:
   SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL: True
