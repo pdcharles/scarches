@@ -12,6 +12,6 @@ dependencies:
     - torchaudio --extra-index-url https://download.pytorch.org/whl/cu118
     - torchvision --extra-index-url https://download.pytorch.org/whl/cu118
     - scvi-tools
-    - -e . # install scarches from local repo - pip distribution out of date, imports deprecated anndata functions
+    - -e .. # install scarches from local repo - pip distribution out of date, imports deprecated anndata functions. Install location relative to yaml location!
 variables:
   SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL: True
